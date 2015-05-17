@@ -1,0 +1,8 @@
+package com.quadcoders.android.travelzeus;
+
+import android.app.ListActivity;
+import android.support.v4.app.ListFragment;
+
+public class CommentsListFragment extends ListFragment {
+
+}

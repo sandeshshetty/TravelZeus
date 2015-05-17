@@ -1,0 +1,24 @@
+package com.quadcoders.android.travelzeus;
+
+import java.util.ArrayList;
+
+import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.widget.ArrayAdapter;
+
+public class CommentsListFragment extends ListFragment {
+	private ArrayList<Trip> mTrips;		// To be changed
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		mTrips = new ArrayList<Trip>();		// To be done
+		
+	}
+	
+	// To be changed to comment
+	private class CommentAdapter extends ArrayAdapter<Trip> {
+		
+	}
+}

@@ -1,0 +1,45 @@
+package com.quadcoders.android.travelzeus;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class BriefInfoFragment extends Fragment {
+	
+	TextView mFromName;
+	TextView mToName;
+	TextView mMonth;
+	TextView mTime;
+	// Has to be replaced in this class
+	Trip mTrip;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater,
+			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		View v = inflater.inflate(R.layout.fragment_brief_info, container, false);
+		
+		mFromName = (TextView) v.findViewById(R.id.briefFrom);
+		mToName = (TextView) v.findViewById(R.id.briefTo);
+		mMonth = (TextView) v.findViewById(R.id.briefMonth);
+		mTime = (TextView) v.findViewById(R.id.briefTime);
+		
+		mFromName.setText(mTrip.getFrom());
+		mToName.setText(mTrip.getTo());
+		mMonth.setText(mTrip.getMonth());
+		mTime.setText(mTrip.getTimeOfDay());
+		
+		return v;
+	}
+
+}

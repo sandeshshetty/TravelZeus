@@ -1,0 +1,37 @@
+package com.quadcoders.android.travelzeus;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+import android.content.Context;
+
+public class PlacesLab {
+	private ArrayList<Places> mPlaces;
+
+    private static PlacesLab sPlacesLab;
+    private Context mAppContext;
+
+    private PlacesLab(Context appContext) {
+        mAppContext = appContext;
+        mPlaces = new ArrayList<Places>();
+    }
+
+    public static PlacesLab get(Context c) {
+        if (sPlacesLab == null) {
+            sPlacesLab = new PlacesLab(c.getApplicationContext());
+        }
+        return sPlacesLab;
+    }
+
+    public ArrayList<Places> getPlaceList() {
+        for (Crime c : mCrimes) {
+            if (c.getId().equals(id))
+                return c;
+        }
+        return null;
+    }
+    
+    public ArrayList<Crime> getCrimes() {
+        return mCrimes;
+    }
+}

@@ -1,0 +1,25 @@
+package com.quadcoders.android.travelzeus;
+
+public class Places {
+	
+	public class Comment {
+		private String mPersonName;
+		private String mComment;
+		
+		public String getPersonName() {
+			return mPersonName;
+		}
+		public void setPersonName(String personName) {
+			mPersonName = personName;
+		}
+		public String getComment() {
+			return mComment;
+		}
+		public void setComment(String comment) {
+			mComment = comment;
+		}
+		
+		
+	}
+
+}

@@ -1,0 +1,20 @@
+package com.quadcoders.android.travelzeus;
+
+import java.util.UUID;
+
+public class Trip {
+
+	private UUID mId;
+	private String mPlace;
+	private String mFrom;
+	private String mTo;
+	private String mMonth;
+	private String mTimeOfDay;
+	private String mComment;
+	
+	public Trip() {
+		mId = UUID.randomUUID();
+	}
+	
+	
+}

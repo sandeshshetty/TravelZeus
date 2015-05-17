@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    <EditText 
+        android:id="@+id/userInputName"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Name..."
+    	 />
+    
+    <EditText 
+        android:id="@+id/userInputPlace"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Place..."
+    	 />
+    
+    <EditText 
+        android:id="@+id/userInputSeason"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Season..."
+    	 />
+    
+   <Spinner 
+       android:id="@+id/userInput"
+       android:layout_height="wrap_content"
+       android:layout_width="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+       />
+   
+    <EditText 
+        android:id="@+id/userComment"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Additional Information..."
+    	 />
+        
+     <Button 
+        android:id="@+id/userImageUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:layout_gravity="center_horizontal"
+       	android:text="Upload photographs" />
+ 
+</LinearLayout>

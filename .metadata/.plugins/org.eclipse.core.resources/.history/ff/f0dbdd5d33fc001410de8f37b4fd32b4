@@ -1,0 +1,41 @@
+package com.quadcoders.android.travelzeus;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+
+public class Places {
+	
+	public class Comment {
+		private String mPersonName;
+		private String mComment;
+		
+		public String getPersonName() {
+			return mPersonName;
+		}
+		public void setPersonName(String personName) {
+			mPersonName = personName;
+		}
+		public String getComment() {
+			return mComment;
+		}
+		public void setComment(String comment) {
+			mComment = comment;
+		}
+		
+	}
+	
+	private String mPlaceName;
+	private String mFromLocation;
+	private String mToLocation;
+	private ArrayList<Comment> mComments;
+	private Context mAppContext;
+	private static ArrayList<Places> sPlaces;
+	
+	private Places(Context appContext) {
+		mAppContext = appContext;
+		sPlaces = new ArrayList<Places>();
+	}
+	
+
+}

@@ -1,0 +1,12 @@
+package com.quadcoders.android.travelzeus;
+
+public class Places {
+	
+	public class Comment {
+		private String mPersonName;
+		private String mComment;
+		
+		
+	}
+
+}

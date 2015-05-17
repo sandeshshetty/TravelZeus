@@ -1,0 +1,59 @@
+package com.quadcoders.android.travelzeus;
+
+import android.content.Intent;
+import android.graphics.Outline;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewOutlineProvider;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
+public class HomeTripFragment extends Fragment {
+
+	private EditText mSearchField;
+	private ImageButton mSearchButton;
+	private ImageButton mAddButton;
+	public static final String EXTRA_SEARCH_NAME = "travelzeus.search";
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater,
+			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		
+		View v = inflater.inflate(R.layout.fragment_home, container, false);
+		mSearchField = (EditText) v.findViewById(R.id.homeSearchBar);
+		mSearchButton = (ImageButton) v.findViewById(R.id.homeSearchButton);
+		mSearchButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getActivity(), PlaceListActivity.class);
+				i.putExtra(EXTRA_SEARCH_NAME, mSearchField.getText().toString());
+			}
+		});
+		
+		mAddButton = (ImageButton) v.findViewById(R.id.homeAddButton);
+		mAddButton.setOutlineProvider(new ViewOutlineProvider() {
+			
+			@Override
+			public void getOutline(View view, Outline outline) {
+				// TODO Auto-generated method stub
+				int diameter = getResources().getDimensionPixelSize(R.dimen.diameter);
+				outline.setOval(0, 0, diameter, diameter);
+			}
+		});
+		mAddButton.setClipToOutline(true);
+		return v;
+	}
+}

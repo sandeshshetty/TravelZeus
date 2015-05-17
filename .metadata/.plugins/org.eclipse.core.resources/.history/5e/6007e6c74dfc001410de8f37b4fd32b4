@@ -1,0 +1,247 @@
+package com.quadcoders.android.travelzeus;
+
+import java.io.File;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+public class InsertInfoFragment extends Fragment {
+
+	private Trip mTrip;
+	private EditText mUserName;
+	private EditText mPlaceName;
+	private EditText mMonthName;
+	private EditText mTime;
+	private EditText mUserComment;
+	private Button mCameraButton;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+		getActivity().setTitle(R.string.add_new_place);
+		mTrip = new Trip();
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultcode, Intent data) {
+
+		 Uri u=data.getData();
+		 
+
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater,
+			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		View v = inflater.inflate(R.layout.fragment_insert_info, container,
+				false);
+
+		getActivity().getActionBar().setHomeButtonEnabled(true);
+
+		mUserName = (EditText) v.findViewById(R.id.userInputName);
+		//mUserName.setText("Enter name: ");
+		mUserName.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+				// mTrip.setUserName(s.toString());
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		mPlaceName = (EditText) v.findViewById(R.id.userInputPlace);
+		//mPlaceName.setText("Enter place: ");
+		mPlaceName.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+				 mTrip.setPlace(s.toString());
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		mMonthName = (EditText) v.findViewById(R.id.userInputSeason);
+		//mMonthName.setText("Enter the best season: ");
+		mMonthName.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+				Log.d("Month entered", s.toString());
+				 mTrip.setMonth(s.toString());
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		Spinner dropDown = (Spinner) v.findViewById(R.id.userInput);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				android.R.layout.simple_list_item_1, Trip.items);
+		// mTime=(DropBoxManager)v.findViewById(R.id.userInput);
+		dropDown.setAdapter(adapter);
+		dropDown.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				// TODO Auto-generated method stub
+				if(Trip.items != null)
+					mTrip.setTimeOfDay((String) arg0.getItemAtPosition(arg2));
+						
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		mUserComment = (EditText) v.findViewById(R.id.userComment);
+		mUserComment.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
+				// TODO Auto-generated method stub
+				 mTrip.setComment(arg0.toString());
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// TODO Auto-generated method stub
+				 mTrip.setComment(arg0.toString());
+			}
+		});
+		mCameraButton = (Button) v.findViewById(R.id.userImageUpload);
+		mCameraButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent in = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				File file = new File(Environment.getExternalStorageDirectory(),
+						"test.jpg");
+				Uri outputFileUri = Uri.fromFile(file);
+				in.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+				startActivityForResult(in, 3456);
+
+			}
+		});
+		return v;
+		// return super.onCreateView(inflater, container, savedInstanceState);
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		// TODO Auto-generated method stub
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.fragment_insert_info, menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case R.id.submitPlaceButton:
+			// Add trip to the trip list
+			// To-do later
+			PlacesLab.get(getActivity()).addPlace(mTrip);
+			getActivity().finish();
+			break;
+		case R.id.cancelPlaceButton:
+			getActivity().finish();
+			break;
+		/*
+		 * Code for getLocationButton case R.id.getLocationButton: try { String
+		 * address = "placeName"; // Replace with place name address =
+		 * address.replace(' ' + '+'); Intent geoIntent = new
+		 * Intent(android.content.Intent.ACTION_VIEW,
+		 * Uri.parse("geo:0,0?q="+address)); startActivity(geoIntent); }
+		 * catch(Exception e) { Log.e("Insert Info error", e.toString()); }
+		 * break;
+		 */
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		PlacesLab.get(getActivity()).savePlaces();
+	}
+
+}

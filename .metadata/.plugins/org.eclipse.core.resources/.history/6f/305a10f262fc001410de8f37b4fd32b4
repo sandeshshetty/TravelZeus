@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <FrameLayout
+        android:id="@+id/dateAndTime"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+    
+    <View style="@style/Divider" />
+<!-- 
+    <FrameLayout
+        android:id="@+id/picturesThumbnails"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateAndTime" >
+    </FrameLayout>
+ -->
+
+    <FrameLayout
+        android:id="@+id/userCommentList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/dateAndTime"
+        android:layout_centerHorizontal="true"
+        android:padding="15dp" >
+
+    </FrameLayout>
+    
+
+</RelativeLayout>
+</ScrollView>

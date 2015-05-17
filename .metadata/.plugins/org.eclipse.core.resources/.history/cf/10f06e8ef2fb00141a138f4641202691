@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your name" />
+    
+    <EditText 
+        android:id="@+id/userInputName"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Name.."
+    	style="?android:listSeparatorTextViewStyle" />
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter place name" />
+    
+    <EditText 
+        android:id="@+id/userInputPlace"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Place.."
+    	style="?android:listSeparatorTextViewStyle" />
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter best season to go" />
+    
+    <EditText 
+        android:id="@+id/userInputSeason"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Season.."
+    	style="?android:listSeparatorTextViewStyle" />
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter time of day to visit" />
+    
+    <EditText 
+        android:id="@+id/userInputTime"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Place.."
+    	style="?android:listSeparatorTextViewStyle" />
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Any additional comments" />
+    
+    <EditText 
+        android:id="@+id/userComment"
+        android:layout_height="wrap_content"
+    	android:layout_width="match_parent"
+    	android:hint="Additional Information.."
+    	style="?android:listSeparatorTextViewStyle" />
+        
+     <Button 
+        android:id="@+id/userInputUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:layout_gravity="center_horizontal"
+       	android:text="Upload place" />
+ 
+</LinearLayout>

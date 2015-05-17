@@ -1,0 +1,18 @@
+package com.quadcoders.android.travelzeus;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+
+public class PlaceListActivity extends SingleFragmentActivity {
+
+	@Override
+	protected Fragment createFragment() {
+		// TODO Auto-generated method stub
+		PlaceListFragment fragment = new PlaceListFragment();
+		Bundle args = new Bundle();
+		args.putSerializable(HomeTripFragment.EXTRA_SEARCH_NAME, getIntent().getSerializableExtra(HomeTripFragment.EXTRA_SEARCH_NAME));
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+}

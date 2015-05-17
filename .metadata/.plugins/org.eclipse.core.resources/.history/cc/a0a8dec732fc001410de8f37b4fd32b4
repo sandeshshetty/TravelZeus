@@ -1,0 +1,7 @@
+package com.quadcoders.android.travelzeus;
+
+import android.support.v4.app.ListFragment;
+
+public class PlaceListFragment extends ListFragment {
+
+}

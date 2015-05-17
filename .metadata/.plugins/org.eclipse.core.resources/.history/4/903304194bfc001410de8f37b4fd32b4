@@ -1,0 +1,134 @@
+package com.quadcoders.android.travelzeus;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Places {
+	private static final String JSON_ID = "id";
+	private static final String JSON_FROMLOCATION = "fromLocation";
+	private static final String JSON_TOLOCATION = "toLocation";
+	private static final String JSON_PLACENAME= "placeName";
+	private static final String JSON_TIME= "timeOfDay";
+	private static final String JSON_MONTH= "month";
+	
+	
+	
+	
+
+	
+	public class Comment {
+		
+		private static final String JSON_USER_NAME = "nameUser";
+		private static final String JSON_USER_COMMENTS = "userComments";
+		private String mPersonName;
+		private String mComment;
+		
+		public String getPersonName() {
+			return mPersonName;
+		}
+		public void setPersonName(String personName) {
+			mPersonName = personName;
+		}
+		public String getComment() {
+			return mComment;
+		}
+		public void setComment(String comment) {
+			mComment = comment;
+		}
+		
+		public JSONObject toJSON() throws JSONException {
+			JSONObject json = new JSONObject();
+			json.put
+		}
+		
+	}
+	
+	private UUID mId;
+	public UUID getId() {
+		return mId;
+	}
+
+	private String mPlaceName;
+	private String mFromLocation;
+	private String mToLocation;
+	private String mTime;
+	private String mMonth;
+	private ArrayList<Comment> mComments;
+	
+	public Places() {
+		mId = UUID.randomUUID();
+		mComments = new ArrayList<Places.Comment>();
+	}
+	
+	public JSONObject toJSON() throws JSONException {
+		JSONObject json = new JSONObject();
+		json.put(JSON_ID, mId.toString());
+		json.put(JSON_FROMLOCATION,mFromLocation );
+		json.put(JSON_TOLOCATION,mToLocation );
+		json.put(JSON_TIME,mTime);
+		json.put(JSON_PLACENAME, mPlaceName);
+		json.put(JSON_MONTH, mId.toString());
+		return json;
+		}
+
+	
+	public String getPlaceName() {
+		return mPlaceName;
+	}
+
+	public void setPlaceName(String placeName) {
+		mPlaceName = placeName;
+	}
+
+	public String getFromLocation() {
+		return mFromLocation;
+	}
+
+	public void setFromLocation(String fromLocation) {
+		mFromLocation = fromLocation;
+	}
+
+	public String getToLocation() {
+		return mToLocation;
+	}
+
+	public void setToLocation(String toLocation) {
+		mToLocation = toLocation;
+	}
+
+	public ArrayList<Comment> getComments() {
+		return mComments;
+	}
+	
+	public String getTime() {
+		return mTime;
+	}
+
+	public void setTime(String time) {
+		mTime = time;
+	}
+
+	public String getMonth() {
+		return mMonth;
+	}
+
+	public void setMonth(String month) {
+		mMonth = month;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getPlaceName();
+	}
+
+	public void addComment(String user, String comment) {
+		Comment c = new Comment();
+		c.setPersonName(user);
+		c.setComment(comment);
+		mComments.add(c);
+	}
+}

@@ -1,0 +1,49 @@
+package com.quadcoders.android.travelzeus;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+import android.content.Context;
+
+public class PlacesLab {
+	private ArrayList<Places> mPlaces;
+
+    private static PlacesLab sPlacesLab;
+    private Context mAppContext;
+
+    private PlacesLab(Context appContext) {
+        mAppContext = appContext;
+        mPlaces = new ArrayList<Places>();
+    }
+
+    public static PlacesLab get(Context c) {
+        if (sPlacesLab == null) {
+            sPlacesLab = new PlacesLab(c.getApplicationContext());
+        }
+        return sPlacesLab;
+    }
+
+    public ArrayList<Places> getPlaceList(String input) {
+    	ArrayList<Places> out = new ArrayList<Places>();
+        for (Places p : mPlaces) {
+            if (p.getFromLocation().equalsIgnoreCase(input) || p.getToLocation().equalsIgnoreCase(input))
+                out.add(p);
+        }
+        return out;
+    }
+    
+    public ArrayList<Places> getCrimes() {
+        return mPlaces;
+    }
+    
+    public void addPlace(Trip trip) {
+    	for(Places p: mPlaces) {
+    		if (p.getPlaceName().equalsIgnoreCase(trip.getPlace())) {
+    			p.setFromLocation(trip.getFrom());
+    			p.setToLocation(trip.getTo());
+    			p.setMonth(trip.getMonth());
+    			p.setTime(trip.getTimeOfDay());
+    		}
+    	}
+    }
+}
